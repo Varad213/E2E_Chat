@@ -18,6 +18,8 @@ while True:
     conn,address=server_socket.accept()
     if conn!=None and address!=None:
         print("Connection recieved")
-        client_address[i]=address
+        data=conn.recv(1024)
+        name=data.decode('utf-8')
+        client_address[name]=address
         print(client_address)
         
