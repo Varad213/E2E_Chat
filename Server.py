@@ -42,12 +42,14 @@ def handle_client(conn,addr):
                 with users_lock:
                     user_list=",".join(users.keys())
                 conn.send(f'Users:{user_list}'.encode('utf-8'))
+
             elif  command=="GET_ADDR" and len(parts) == 2:
                 target_nickname=parts[1]
                 with users_lock:
                     target_addr=users[target_nickname]
+                    print(f"{target_nickname}:{target_addr}")
                 if target_addr:
-                    conn.send(f'ADDR:{target_nickname}: {target_addr[0]}:{target_addr[1]}')
+                    conn.send(f'ADDR:{target_nickname}: {target_addr[0]}:{target_addr[1]}'.encode('utf-8'))
                 else:
                     conn.send("Error: user not found".encode('utf-8'))
     except ConnectionResetError:
