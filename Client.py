@@ -11,8 +11,8 @@ from kivy.core.window import Window
 from kivy.clock import mainthread
 
 # --- Configuration ---
-SERVER_IP = '127.0.0.1'  # IP of your discovery server
-SERVER_PORT = 9999
+SERVER_IP = '192.168.1.11'  # IP of your discovery server
+SERVER_PORT = 2024
 
 class ChatApp(App):
     def __init__(self, **kwargs):
